@@ -1,6 +1,82 @@
 .App {
-    margin: 5%;
+    margin: 1rem;
 }
+
 th:hover {
     cursor: pointer;
+}
+
+.sr-only {
+    font-weight: 400;
+    font-style: italic;
+}
+
+.btn {
+    margin-bottom: 1rem;
+}
+
+.btn-success {
+    margin-top: 1rem;
+}
+
+/* add contact styles */
+
+.contact {
+    margin: 0 auto;
+    position: relative;
+    border-radius: 30px;
+    background-color: darkgray;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: 80%;
+}
+
+.contact h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.contact form input, .contact form textarea {
+    width: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    margin: 0 0 8px 0;
+    padding: 18px 26px;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    transition: 0.3s ease-in-out;
+}
+
+.contact form input:focus, .contact form textarea:focus {
+    background: rgba(255, 255, 255, 1);
+    color: #121212;
+}
+
+.contact form input::placeholder, .contact form textarea::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+}
+
+.contact form input:focus::placeholder, .contact form textarea:focus::placeholder {
+    color: #121212;
+    opacity: 0.8;
+}
+
+.contact form button {
+    width: 100%;
+    border-radius: 20px;
+    margin: 0 0 8px 0;
+    padding: 18px 26px;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    position: relative;
+}
+
+.contact form button span {
+    z-index: 1;
+    position: relative;
 }
