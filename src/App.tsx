@@ -2,6 +2,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import cellEditFactory from 'react-bootstrap-table2-editor';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import { MDBTable } from 'mdb-react-ui-kit';
 import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -24,9 +25,7 @@ function App(this: any) {
       let checkId = (val: any) => {
         return (val.id !== rowId && val.name !== rowName)
       }
-      let filteredContacts = contacts.filter(checkId)
-      console.log(filteredContacts)
-      setContacts(filteredContacts)
+      setContacts(contacts.filter(checkId))
     }
 
     const columns = [
@@ -56,7 +55,7 @@ function App(this: any) {
       },
       {
         dataField: "remove",
-        text: "Controls",
+        text: "Remove Contact",
         formatter: (cellContent: any, row: any) => {
           return (
             <button className='btn btn-danger' onClick={() => handleDelete(row.id, row.name)}>Remove</button>
@@ -97,7 +96,7 @@ function App(this: any) {
       ].sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
       )
     }
-
+   
     const handleAddContact = () => {
       setAddContact(!addContact)
     }
@@ -112,20 +111,22 @@ function App(this: any) {
                 addContact && 
                 <AddContactForm handleSubmit={handleSubmit} addContact={handleAddContact} />
               }
-              <BootstrapTable 
-                keyField="id" 
-                data={contacts} 
-                columns={columns}
-                striped
-                hover
-                condensed
-                pagination={paginationFactory()}
-                cellEdit={cellEditFactory({
-                  mode: "dbclick",
-                  blurToSave: true,
-                })}
-                filter={filterFactory()}
-              />
+              <MDBTable responsive>
+                <BootstrapTable 
+                  keyField="id" 
+                  data={contacts} 
+                  columns={columns}
+                  striped
+                  hover
+                  condensed
+                  pagination={paginationFactory()}
+                  cellEdit={cellEditFactory({
+                    mode: "dbclick",
+                    blurToSave: true,
+                  })}
+                  filter={filterFactory()}
+                />
+              </MDBTable>
       </div>
     );
 }
