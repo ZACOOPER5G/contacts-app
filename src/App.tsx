@@ -1,20 +1,27 @@
-import BootstrapTable from 'react-bootstrap-table-next'
+import BootstrapTable from 'react-bootstrap-table-next';
+import paginationFactory from 'react-bootstrap-table2-paginator'
 import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function App() {
+function App(this: any) {
     const [contacts, setContacts] = useState<any>([]);
 
     useEffect(() => {
       getContactInfo();
     }, []);
 
+    const removeButton = () => {
+      return (
+        <button onClick={(e) => console.log(e.target)}>Remove</button>
+      )
+    }
+
     const columns = [
       {
-      dataField: "name",
-      text: "Name",
-      sort: true
+        dataField: "name",
+        text: "Name",
+        sort: true
       },
       {
         dataField: "email",
@@ -35,6 +42,11 @@ function App() {
         dataField: "website",
         text: "Website",
         sort: true
+      },
+      {
+        dataField: {removeButton},
+        text: "Controls",
+        formatter: removeButton,
       }
     ]
 
@@ -58,6 +70,7 @@ function App() {
           striped
           hover
           condensed
+          pagination={paginationFactory()}
         />
       </div>
     );
