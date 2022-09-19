@@ -94,7 +94,7 @@ function App(this: any) {
           website: details.website,
           id: createId(),
         }
-      ]
+      ].sort((a, b) => a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)
       )
     }
 
