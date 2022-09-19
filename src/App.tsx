@@ -1,6 +1,7 @@
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import cellEditFactory, { Type } from 'react-bootstrap-table2-editor';
+import filterFactory from 'react-bootstrap-table2-filter';
 import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -48,6 +49,7 @@ function App(this: any) {
         dataField: {removeButton},
         text: "Controls",
         formatter: removeButton,
+        editable: false,
       }
     ]
 
@@ -72,6 +74,11 @@ function App(this: any) {
           hover
           condensed
           pagination={paginationFactory()}
+          cellEdit={cellEditFactory({
+            mode: "dbclick",
+            blurToSave: true,
+          })}
+          
         />
       </div>
     );
