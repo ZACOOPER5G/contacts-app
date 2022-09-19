@@ -12,7 +12,6 @@ function App(this: any) {
     const [contacts, setContacts] = useState<any>([]);
     const [isCancelled, setIsCancelled] = useState(false);
     const [addContact, setAddContact] = useState(false);
-    const [open, setOpen] = useState(false)
 
     useEffect(() => {
       !isCancelled && getContactInfo();
@@ -104,7 +103,7 @@ function App(this: any) {
     return (
       <div className="App">
               <button 
-                className={ addContact ? "btn btn-danger" : "btn btn-success"} 
+                className={ addContact ? "btn btn-dark" : "btn btn-success"} 
                 onClick={() => setAddContact(!addContact)} >{ addContact ? "Cancel" : "Add Contact"}
               </button>
               { 

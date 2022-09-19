@@ -33,7 +33,7 @@ export const AddContactForm = (props: any) => {
                         <h2>Add Contact</h2>
                         <form onSubmit={handleSubmit} >
                             <Row>
-                                <Col sm={12} className="px-1" >
+                                <Col sm={12} className="px-2" >
                                     <input type="text" value={formDetails.name} placeholder="Name" onChange={(e) => onFormUpdate('name', e.target.value)} />
                                 </Col>
                                 <Col sm={12} className="px-2" >

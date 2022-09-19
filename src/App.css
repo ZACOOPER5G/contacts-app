@@ -25,21 +25,19 @@ th:hover {
     margin: 0 auto;
     position: relative;
     border-radius: 30px;
-    background-color: darkgray;
     padding: 1rem;
     margin-bottom: 1rem;
     width: 80%;
+    border: lightgray 1px solid;
 }
 
 .contact h2 {
     font-size: 28px;
     font-weight: 700;
-    margin-bottom: 30px;
 }
 .contact form input {
     width: 200%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: lightgray 1px solid;
     border-radius: 20px;
     margin: 0 0 8px 0;
     padding: 18px 26px;
@@ -57,14 +55,12 @@ th:hover {
 }
 
 .contact form input:focus, .contact form textarea:focus {
-    background: rgba(255, 255, 255, 1);
     color: #121212;
 }
 
 .contact form input::placeholder, .contact form textarea::placeholder {
     font-size: 16px;
     font-weight: 400;
-    color: #fff;
 }
 
 .contact form input:focus::placeholder, .contact form textarea:focus::placeholder {
