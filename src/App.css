@@ -36,7 +36,7 @@ th:hover {
     font-weight: 700;
     margin-bottom: 30px;
 }
-.contact form input, .contact form textarea {
+.contact form input {
     width: 200%;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -47,6 +47,13 @@ th:hover {
     font-size: 18px;
     letter-spacing: 0.8px;
     transition: 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 770px) {
+    .contact form input {
+        overflow: scroll;
+        width: 100%;
+    }
 }
 
 .contact form input:focus, .contact form textarea:focus {
