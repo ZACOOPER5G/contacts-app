@@ -13,16 +13,27 @@ function App(this: any) {
     const [isCancelled, setIsCancelled] = useState(false);
     const [addContact, setAddContact] = useState(false);
 
+    // axios get request to retrieve contact info
+    const getContactInfo = () => {
+      axios('https://jsonplaceholder.typicode.com/users/')
+      .then(res => {
+        setContacts(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
     useEffect(() => {
       !isCancelled && getContactInfo();
       return () => {
         setIsCancelled(true);
       }
-    }, []);
+    }, [isCancelled]);
 
-    const handleDelete = (rowId: any, rowName: any) => {
+    const handleDelete = (rowId: number) => {
       let checkId = (val: any) => {
-        return (val.id !== rowId && val.name !== rowName)
+        return (val.id !== rowId)
       }
       setContacts(contacts.filter(checkId))
     }
@@ -55,25 +66,16 @@ function App(this: any) {
       {
         dataField: "remove",
         text: "Remove Contact",
-        formatter: (cellContent: any, row: any) => {
+        formatter: (cellContent: string, row: any) => {
           return (
-            <button className='btn btn-danger' onClick={() => handleDelete(row.id, row.name)}>Remove</button>
+            <button className='btn btn-danger' onClick={() => {
+              handleDelete(row.id)
+            }}>Remove</button>
           )
         },
         editable: false,
       }
     ]
-
-    // axios get request to retrieve contact info
-    const getContactInfo = () => {
-      axios('https://jsonplaceholder.typicode.com/users/')
-      .then(res => {
-        setContacts(res.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-    }
 
     const handleSubmit = (details: any) => {
       const createId = () => {
@@ -113,6 +115,8 @@ function App(this: any) {
               <MDBTable responsive>
                 <BootstrapTable 
                   keyField="id" 
+                  remote={true}
+                  handleDelete={true}
                   data={contacts} 
                   columns={columns}
                   striped
@@ -124,6 +128,7 @@ function App(this: any) {
                     blurToSave: true,
                   })}
                   filter={filterFactory()}
+                  deleteRow={true}
                 />
               </MDBTable>
       </div>
